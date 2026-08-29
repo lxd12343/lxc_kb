@@ -1,0 +1,49 @@
+name: Build QMK Firmware
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-arm-none-eabi python3-pip git
+
+      - name: Install QMK CLI
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install qmk
+
+      - name: Clone QMK 0.22.0
+        run: |
+          git clone --depth 1 --branch 0.22.0 https://github.com/qmk/qmk_firmware.git ~/qmk_firmware
+          cd ~/qmk_firmware
+          git submodule update --init --recursive --depth 1
+          python3 -m pip install -r requirements.txt
+
+      - name: Copy keyboard files
+        run: |
+          mkdir -p ~/qmk_firmware/keyboards/lxc_kb/keymaps/default
+          cp config.h info.json rules.mk ~/qmk_firmware/keyboards/lxc_kb/
+          cp keymaps/default/keymap.c ~/qmk_firmware/keyboards/lxc_kb/keymaps/default/
+
+      - name: Compile
+        run: |
+          cd ~/qmk_firmware
+          make lxc_kb:default
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: lxc_kb-firmware
+          path: ~/qmk_firmware/lxc_kb_default.*
+          if-no-files-found: error
