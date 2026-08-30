@@ -3,3 +3,6 @@ BOARD = STM32_F103_STM32DUINO
 BUILD_OPTIMIZATION = s
 BOOTLOADER = stm32-dfu
 OPT_DEFS += -DCORTEX_ENABLE_WFI_IDLE=TRUE
+
+# Skip dfu-suffix (not needed for ST-Link flashing)
+DFU_SUFFIX = true
