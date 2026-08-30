@@ -1,11 +1,5 @@
 #pragma once
 
-#define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x6060
-#define DEVICE_VER      0x0001
-#define MANUFACTURER    LXC
-#define PRODUCT         LXC KB 87
-
 #define MATRIX_ROWS 8
 #define MATRIX_COLS 17
 
