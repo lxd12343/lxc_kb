@@ -5,8 +5,8 @@
     "processor": "STM32F103",
     "bootloader": "custom",
     "matrix_pins": {
-        "rows": ["B0", "B1", "B14", "B3", "B4", "B5", "B6", "B7"],
-        "cols": ["A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "B13", "B8", "B9", "B10", "B11", "B12"]
+        "rows": ["B0", "B1", "B13", "B3", "B4", "B5", "B6", "B7"],
+        "cols": ["A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "B14", "B8", "B9", "B10", "B11", "B12"]
     },
     "diode_direction": "COL2ROW",
     "usb": {
