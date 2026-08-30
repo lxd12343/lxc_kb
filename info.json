@@ -4,7 +4,7 @@
     "maintainer": "LXC",
     "bootloader": "stm32duino",
     "processor": "STM32F103",
-    "board": "STM32F103C6",
+    "development_board": "bluepill",
     "diode_direction": "COL2ROW",
     "matrix_pins": {
         "rows": ["B0", "B1", "B12", "B10", "B11", "B5", "B14", "B15"],
