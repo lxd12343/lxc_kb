@@ -4,5 +4,8 @@ BUILD_OPTIMIZATION = s
 BOOTLOADER = stm32duino
 OPT_DEFS += -DCORTEX_ENABLE_WFI_IDLE=TRUE
 
+# Disable JTAG, keep SWD - frees PA15, PB3, PB4
+NO_JTAG = yes
+
 # Skip dfu-suffix (not needed for ST-Link flashing)
 DFU_SUFFIX = true
